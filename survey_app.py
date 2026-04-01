@@ -22,6 +22,7 @@ SURVEY_DESCRIPTION: str = (
     "and how mentally refreshed you feel as a result."
 )
 MAX_SCORE: int = 80
+SCORE_PERCENTAGE_PRECISION: float = 1.0   # decimal places used when rounding percentage scores
 ALLOWED_CHARS: frozenset = frozenset("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ -'")
 
 # Questions embedded directly in the code (list of dicts)
@@ -275,6 +276,30 @@ STATE_COLORS: dict = {
 }
 
 # ─────────────────────────────────────────────
+# LOAD QUESTIONS FROM EXTERNAL FILE AT RUNTIME
+# ─────────────────────────────────────────────
+
+def load_questions_from_file(filepath: str = "questions.json") -> list:
+    """Load survey questions from an external JSON file at runtime.
+    Falls back to the hardcoded QUESTIONS list if the file is not found."""
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            data: dict = json.load(f)
+            loaded: list = data.get("questions", [])
+            if loaded:
+                return loaded
+    except FileNotFoundError:
+        pass
+    except Exception:
+        pass
+    # Fallback: return hardcoded questions
+    return QUESTIONS
+
+
+# Active question set — loaded from file if available, else hardcoded
+ACTIVE_QUESTIONS: list = load_questions_from_file()
+
+# ─────────────────────────────────────────────
 # HELPER FUNCTIONS
 # ─────────────────────────────────────────────
 
@@ -322,12 +347,14 @@ def calculate_score(answers: list) -> int:
 def build_result_dict(surname: str, given_name: str, dob: str,
                       student_id: str, score: int, state: dict) -> dict:
     """Build a result dictionary for saving."""
+    percentage_score: float = round((score / MAX_SCORE) * 100, int(SCORE_PERCENTAGE_PRECISION))
     result: dict = {
         "surname": surname,
         "given_name": given_name,
         "date_of_birth": dob,
         "student_id": student_id,
         "total_score": score,
+        "percentage_score": percentage_score,
         "psychological_state": state["label"],
         "description": state["description"],
         "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -416,7 +443,7 @@ def main():
                         <b>{data.get('given_name', '')} {data.get('surname', '')}</b><br>
                         Student ID: {data.get('student_id', '')}<br>
                         Date of Birth: {data.get('date_of_birth', '')}<br>
-                        Total Score: {data.get('total_score', '')}<br>
+                        Total Score: {data.get('total_score', '')} / {MAX_SCORE} ({data.get('percentage_score', 'N/A')}%)<br>
                         State: <b>{state_label}</b><br><br>
                         {data.get('description', '')}
                     </div>
@@ -471,7 +498,7 @@ def main():
     # ── SURVEY PAGE ──
     elif st.session_state.page == "survey":
         st.subheader("📋 Survey Questions")
-        total_q: int = len(QUESTIONS)
+        total_q: int = len(ACTIVE_QUESTIONS)
         score_range: range = range(total_q)
 
         with st.form("survey_form"):
@@ -479,7 +506,7 @@ def main():
             all_answered: bool = True
 
             for idx in score_range:
-                q: dict = QUESTIONS[idx]
+                q: dict = ACTIVE_QUESTIONS[idx]
                 labels: list = [opt["label"] for opt in q["options"]]
                 st.markdown(f"**Q{q['id']}. {q['text']}**")
                 choice = st.radio(
@@ -536,7 +563,7 @@ def main():
                 <b>Name:</b> {result['given_name']} {result['surname']}<br>
                 <b>Student ID:</b> {result['student_id']}<br>
                 <b>Date of Birth:</b> {result['date_of_birth']}<br>
-                <b>Total Score:</b> {result['total_score']} / {MAX_SCORE}<br>
+                <b>Total Score:</b> {result['total_score']} / {MAX_SCORE} ({result['percentage_score']}%)<br>
                 <br>
                 <b>Psychological State: {state_label}</b><br><br>
                 {result['description']}
