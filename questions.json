@@ -1,0 +1,259 @@
+{
+  "survey_title": "Campus Walk Frequency and Mental Refreshment During Breaks Survey",
+  "survey_description": "This survey evaluates how frequently you engage in campus walks during breaks and how mentally refreshed you feel as a result. Answer each question honestly to receive an accurate assessment.",
+  "scoring_note": "Each answer carries a score (0-4). Lower total scores indicate high walk frequency and strong mental refreshment. Higher scores suggest infrequent walking and low mental recovery.",
+  "questions": [
+    {
+      "id": 1,
+      "text": "How many times per day do you typically take a walk during academic breaks?",
+      "options": [
+        {"label": "3 or more times", "score": 0},
+        {"label": "Twice a day", "score": 1},
+        {"label": "Once a day", "score": 2},
+        {"label": "Rarely, only occasionally", "score": 3},
+        {"label": "I never walk during breaks", "score": 4}
+      ]
+    },
+    {
+      "id": 2,
+      "text": "After a short walk around campus, how mentally refreshed do you feel?",
+      "options": [
+        {"label": "Completely refreshed and re-energized", "score": 0},
+        {"label": "Noticeably refreshed", "score": 1},
+        {"label": "Slightly refreshed", "score": 2},
+        {"label": "Barely any difference", "score": 3},
+        {"label": "I feel no mental refreshment at all", "score": 4}
+      ]
+    },
+    {
+      "id": 3,
+      "text": "How long do your campus walks during breaks usually last?",
+      "options": [
+        {"label": "More than 15 minutes", "score": 0},
+        {"label": "10 to 15 minutes", "score": 1},
+        {"label": "5 to 10 minutes", "score": 2},
+        {"label": "Less than 5 minutes", "score": 3},
+        {"label": "I do not walk during breaks", "score": 4}
+      ]
+    },
+    {
+      "id": 4,
+      "text": "How well can you concentrate on your studies after taking a walk during a break?",
+      "options": [
+        {"label": "Much better than before", "score": 0},
+        {"label": "Somewhat better", "score": 1},
+        {"label": "About the same", "score": 2},
+        {"label": "Slightly worse, I feel distracted", "score": 3},
+        {"label": "My concentration drops significantly", "score": 4}
+      ]
+    },
+    {
+      "id": 5,
+      "text": "Do you feel that walking on campus between classes helps reduce your academic pressure?",
+      "options": [
+        {"label": "Definitely yes, it greatly reduces pressure", "score": 0},
+        {"label": "Yes, it helps a little", "score": 1},
+        {"label": "Neutral, it makes no difference", "score": 2},
+        {"label": "Not really, I still feel pressured", "score": 3},
+        {"label": "No, it does not help at all", "score": 4}
+      ]
+    },
+    {
+      "id": 6,
+      "text": "How often do you choose to sit indoors instead of walking during your free time on campus?",
+      "options": [
+        {"label": "Never, I always prefer to walk", "score": 0},
+        {"label": "Rarely, walking is my first choice", "score": 1},
+        {"label": "Sometimes I sit, sometimes I walk", "score": 2},
+        {"label": "I usually sit rather than walk", "score": 3},
+        {"label": "Always, I always stay seated indoors", "score": 4}
+      ]
+    },
+    {
+      "id": 7,
+      "text": "How does your mood change after a walk through the campus grounds?",
+      "options": [
+        {"label": "My mood improves greatly", "score": 0},
+        {"label": "My mood improves slightly", "score": 1},
+        {"label": "My mood stays the same", "score": 2},
+        {"label": "I feel somewhat worse afterwards", "score": 3},
+        {"label": "My mood worsens noticeably", "score": 4}
+      ]
+    },
+    {
+      "id": 8,
+      "text": "How physically active do you feel during a typical academic day on campus?",
+      "options": [
+        {"label": "Very active, I walk a lot between activities", "score": 0},
+        {"label": "Fairly active with some movement", "score": 1},
+        {"label": "Moderately active", "score": 2},
+        {"label": "Mostly seated with minimal movement", "score": 3},
+        {"label": "Almost entirely sedentary all day", "score": 4}
+      ]
+    },
+    {
+      "id": 9,
+      "text": "How often do you use campus outdoor spaces (gardens, courtyards, pathways) during breaks?",
+      "options": [
+        {"label": "Every single break", "score": 0},
+        {"label": "Most breaks", "score": 1},
+        {"label": "Occasionally", "score": 2},
+        {"label": "Rarely", "score": 3},
+        {"label": "Never", "score": 4}
+      ]
+    },
+    {
+      "id": 10,
+      "text": "How do you feel about your ability to manage mental fatigue throughout the academic day?",
+      "options": [
+        {"label": "I manage it very well through regular movement", "score": 0},
+        {"label": "I manage it reasonably well", "score": 1},
+        {"label": "I sometimes struggle with fatigue", "score": 2},
+        {"label": "I often feel mentally drained", "score": 3},
+        {"label": "I feel constantly mentally exhausted", "score": 4}
+      ]
+    },
+    {
+      "id": 11,
+      "text": "How often do you feel mentally stuck or unable to process new information during lectures?",
+      "options": [
+        {"label": "Never, I always feel mentally clear", "score": 0},
+        {"label": "Rarely", "score": 1},
+        {"label": "Sometimes", "score": 2},
+        {"label": "Often", "score": 3},
+        {"label": "Almost every lecture", "score": 4}
+      ]
+    },
+    {
+      "id": 12,
+      "text": "When you feel mentally tired during the day, what do you most commonly do?",
+      "options": [
+        {"label": "Go for a walk around campus immediately", "score": 0},
+        {"label": "Take a short walk if time allows", "score": 1},
+        {"label": "Sit quietly and rest in place", "score": 2},
+        {"label": "Use my phone or scroll social media", "score": 3},
+        {"label": "Continue working despite the fatigue", "score": 4}
+      ]
+    },
+    {
+      "id": 13,
+      "text": "How much does the natural environment of your campus (trees, open areas) contribute to your sense of calm?",
+      "options": [
+        {"label": "It greatly contributes to my calmness", "score": 0},
+        {"label": "It helps a fair amount", "score": 1},
+        {"label": "It has a minor effect", "score": 2},
+        {"label": "It has almost no effect on me", "score": 3},
+        {"label": "It has no effect whatsoever", "score": 4}
+      ]
+    },
+    {
+      "id": 14,
+      "text": "How often do you plan or schedule a walk into your academic day as a deliberate break strategy?",
+      "options": [
+        {"label": "Always, it is a regular part of my routine", "score": 0},
+        {"label": "Often", "score": 1},
+        {"label": "Sometimes", "score": 2},
+        {"label": "Rarely, only when I remember", "score": 3},
+        {"label": "Never, I do not plan walks at all", "score": 4}
+      ]
+    },
+    {
+      "id": 15,
+      "text": "How would you rate your overall mental well-being on days when you walk regularly on campus compared to days when you do not?",
+      "options": [
+        {"label": "Much better on walking days", "score": 0},
+        {"label": "Slightly better on walking days", "score": 1},
+        {"label": "I notice no real difference", "score": 2},
+        {"label": "Slightly worse on walking days due to tiredness", "score": 3},
+        {"label": "I have never noticed any connection", "score": 4}
+      ]
+    },
+    {
+      "id": 16,
+      "text": "How easy is it for you to detach mentally from academic work during a break walk?",
+      "options": [
+        {"label": "Very easy, I fully switch off from work", "score": 0},
+        {"label": "Fairly easy", "score": 1},
+        {"label": "Neutral, sometimes I do sometimes I don't", "score": 2},
+        {"label": "Difficult, my mind stays on coursework", "score": 3},
+        {"label": "Impossible, I cannot stop thinking about tasks", "score": 4}
+      ]
+    },
+    {
+      "id": 17,
+      "text": "How often do you feel physically restless or tense after sitting for long periods during classes?",
+      "options": [
+        {"label": "Never, I manage well through regular movement", "score": 0},
+        {"label": "Rarely", "score": 1},
+        {"label": "Sometimes", "score": 2},
+        {"label": "Often", "score": 3},
+        {"label": "Almost always after every long session", "score": 4}
+      ]
+    },
+    {
+      "id": 18,
+      "text": "How satisfied are you with the quality of your mental breaks during the academic day?",
+      "options": [
+        {"label": "Very satisfied", "score": 0},
+        {"label": "Fairly satisfied", "score": 1},
+        {"label": "Neutral", "score": 2},
+        {"label": "Somewhat dissatisfied", "score": 3},
+        {"label": "Very dissatisfied", "score": 4}
+      ]
+    },
+    {
+      "id": 19,
+      "text": "How often do you walk with peers or classmates during campus breaks as a social-refreshment activity?",
+      "options": [
+        {"label": "Almost always", "score": 0},
+        {"label": "Frequently", "score": 1},
+        {"label": "Occasionally", "score": 2},
+        {"label": "Rarely", "score": 3},
+        {"label": "Never, I always stay alone and seated", "score": 4}
+      ]
+    },
+    {
+      "id": 20,
+      "text": "How do you feel your academic performance is affected by the amount of physical movement you get during the day?",
+      "options": [
+        {"label": "More movement clearly improves my performance", "score": 0},
+        {"label": "It somewhat helps my performance", "score": 1},
+        {"label": "I see no connection between movement and performance", "score": 2},
+        {"label": "Too much movement distracts me", "score": 3},
+        {"label": "Physical movement negatively affects my studies", "score": 4}
+      ]
+    }
+  ],
+  "psychological_states": [
+    {
+      "score_range": {"min": 0, "max": 15},
+      "label": "Excellent Mental Refreshment",
+      "description": "You walk frequently and experience very high levels of mental refreshment. Your break habits are excellent, and your mind is well-rested and alert throughout the day. No intervention needed."
+    },
+    {
+      "score_range": {"min": 16, "max": 30},
+      "label": "Good Mental Recovery",
+      "description": "You maintain reasonably good walking habits and benefit from moderate mental refreshment. Your mental energy levels are mostly stable. Continue your current routine and consider adding more outdoor time."
+    },
+    {
+      "score_range": {"min": 31, "max": 45},
+      "label": "Moderate Refreshment — Improvement Recommended",
+      "description": "Your walking frequency and mental refreshment are at a moderate level. You may experience occasional mental fatigue. It is recommended to incorporate at least one intentional 10-minute walk into each academic day."
+    },
+    {
+      "score_range": {"min": 46, "max": 60},
+      "label": "Low Mental Refreshment — Action Advised",
+      "description": "You walk infrequently and mental refreshment is low. You likely experience noticeable mental fatigue and reduced concentration. A structured break-walking routine is strongly advised to improve your well-being."
+    },
+    {
+      "score_range": {"min": 61, "max": 75},
+      "label": "Poor Break Habits — Wellbeing at Risk",
+      "description": "Your break habits are poor and you are experiencing significant mental fatigue due to inactivity. Academic performance may be affected. Consider speaking with a student wellbeing advisor and start a daily movement plan."
+    },
+    {
+      "score_range": {"min": 76, "max": 80},
+      "label": "Critical Sedentary State — Support Needed",
+      "description": "You are almost entirely sedentary during the academic day and experience very low mental refreshment. This pattern poses a serious risk to your psychological and physical health. Professional wellbeing support is strongly recommended."
+    }
+  ]
+}
