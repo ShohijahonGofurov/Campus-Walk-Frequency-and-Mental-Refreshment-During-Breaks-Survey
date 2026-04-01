@@ -11,11 +11,6 @@ import re
 import os
 from datetime import datetime, date
 
-# ─────────────────────────────────────────────
-# VARIABLE TYPES USED (for assessment criteria):
-# int, str, float, list, tuple, range, bool, dict, set, frozenset
-# ─────────────────────────────────────────────
-
 SURVEY_TITLE: str = "Campus Walk Frequency and Mental Refreshment During Breaks Survey"
 SURVEY_DESCRIPTION: str = (
     "This survey evaluates how frequently you engage in campus walks during breaks "
@@ -275,9 +270,6 @@ STATE_COLORS: dict = {
     "Critical Sedentary State — Support Needed": "#8e44ad",
 }
 
-# ─────────────────────────────────────────────
-# LOAD QUESTIONS FROM EXTERNAL FILE AT RUNTIME
-# ─────────────────────────────────────────────
 
 def load_questions_from_file(filepath: str = "questions.json") -> list:
     """Load survey questions from an external JSON file at runtime.
@@ -299,9 +291,6 @@ def load_questions_from_file(filepath: str = "questions.json") -> list:
 # Active question set — loaded from file if available, else hardcoded
 ACTIVE_QUESTIONS: list = load_questions_from_file()
 
-# ─────────────────────────────────────────────
-# HELPER FUNCTIONS
-# ─────────────────────────────────────────────
 
 def validate_name(name: str) -> bool:
     """Validate name: only letters, hyphens, apostrophes, spaces allowed."""
@@ -375,9 +364,6 @@ def load_results_json(file_content: str) -> dict:
     data: dict = json.loads(file_content)
     return data
 
-# ─────────────────────────────────────────────
-# STREAMLIT UI
-# ─────────────────────────────────────────────
 
 def main():
     st.set_page_config(
@@ -551,7 +537,6 @@ def main():
                 st.session_state.page = "result"
                 st.rerun()
 
-    # ── RESULT PAGE ──
     elif st.session_state.page == "result":
         result: dict = st.session_state.result
         state_label: str = result["psychological_state"]
