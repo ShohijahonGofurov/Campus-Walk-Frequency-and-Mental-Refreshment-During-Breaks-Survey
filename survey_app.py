@@ -17,10 +17,9 @@ SURVEY_DESCRIPTION: str = (
     "and how mentally refreshed you feel as a result."
 )
 MAX_SCORE: int = 80
-SCORE_PERCENTAGE_PRECISION: float = 1.0   # decimal places used when rounding percentage scores
+SCORE_PERCENTAGE_PRECISION: float = 1.0
 ALLOWED_CHARS: frozenset = frozenset("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ -'")
 
-# Questions embedded directly in the code (list of dicts)
 QUESTIONS: list = [
     {
         "id": 1,
@@ -244,7 +243,6 @@ QUESTIONS: list = [
     },
 ]
 
-# Psychological states (tuple of dicts for immutability)
 PSYCHOLOGICAL_STATES: tuple = (
     {"min": 0,  "max": 15, "label": "Excellent Mental Refreshment",
      "description": "You walk frequently and experience very high levels of mental refreshment. Your break habits are excellent, and your mind is well-rested and alert throughout the day. No intervention needed."},
@@ -260,7 +258,6 @@ PSYCHOLOGICAL_STATES: tuple = (
      "description": "You are almost entirely sedentary during the academic day and experience very low mental refreshment. This pattern poses a serious risk to your psychological and physical health. Professional wellbeing support is strongly recommended."},
 )
 
-# Score color map (dict)
 STATE_COLORS: dict = {
     "Excellent Mental Refreshment": "#2ecc71",
     "Good Mental Recovery": "#27ae60",
@@ -269,7 +266,6 @@ STATE_COLORS: dict = {
     "Poor Break Habits — Wellbeing at Risk": "#e74c3c",
     "Critical Sedentary State — Support Needed": "#8e44ad",
 }
-
 
 def load_questions_from_file(filepath: str = "questions.json") -> list:
     """Load survey questions from an external JSON file at runtime.
@@ -284,38 +280,33 @@ def load_questions_from_file(filepath: str = "questions.json") -> list:
         pass
     except Exception:
         pass
-    # Fallback: return hardcoded questions
+
     return QUESTIONS
 
-
-# Active question set — loaded from file if available, else hardcoded
 ACTIVE_QUESTIONS: list = load_questions_from_file()
-
 
 def validate_name(name: str) -> bool:
     """Validate name: only letters, hyphens, apostrophes, spaces allowed."""
     if not name or not name.strip():
         return False
     allowed: set = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ -'")
-    # for loop for input validation
+
     for char in name:
         if char not in allowed:
             return False
     return True
 
-
 def validate_student_id(sid: str) -> bool:
     """Validate student ID: digits only."""
     if not sid:
         return False
-    # while loop for input validation (simulated with index)
+
     i: int = 0
     while i < len(sid):
         if not sid[i].isdigit():
             return False
         i += 1
     return True
-
 
 def get_psychological_state(score: int) -> dict:
     """Return the psychological state dict based on total score."""
@@ -324,14 +315,12 @@ def get_psychological_state(score: int) -> dict:
             return state
     return PSYCHOLOGICAL_STATES[-1]
 
-
 def calculate_score(answers: list) -> int:
     """Calculate total score from a list of selected option scores."""
     total: int = 0
     for s in answers:
         total += s
     return total
-
 
 def build_result_dict(surname: str, given_name: str, dob: str,
                       student_id: str, score: int, state: dict) -> dict:
@@ -350,7 +339,6 @@ def build_result_dict(surname: str, given_name: str, dob: str,
     }
     return result
 
-
 def save_results_json(result: dict) -> str:
     """Save results to a JSON file and return the filename."""
     filename: str = f"result_{result['student_id']}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
@@ -358,12 +346,10 @@ def save_results_json(result: dict) -> str:
         json.dump(result, f, indent=4, ensure_ascii=False)
     return filename
 
-
 def load_results_json(file_content: str) -> dict:
     """Load and parse a JSON result file."""
     data: dict = json.loads(file_content)
     return data
-
 
 def main():
     st.set_page_config(
@@ -372,7 +358,6 @@ def main():
         layout="centered",
     )
 
-    # Custom CSS
     st.markdown("""
         <style>
         .main { background-color: #f0f4f8; }
@@ -391,7 +376,6 @@ def main():
     st.caption(SURVEY_DESCRIPTION)
     st.divider()
 
-    # Session state initialization
     if "page" not in st.session_state:
         st.session_state.page = "home"
     if "answers" not in st.session_state:
@@ -399,7 +383,6 @@ def main():
     if "result" not in st.session_state:
         st.session_state.result = None
 
-    # ── HOME PAGE ──
     if st.session_state.page == "home":
         st.subheader("Welcome! What would you like to do?")
         col1, col2 = st.columns(2)
@@ -412,7 +395,6 @@ def main():
                 st.session_state.page = "load"
                 st.rerun()
 
-    # ── LOAD PAGE ──
     elif st.session_state.page == "load":
         st.subheader("📂 Load Existing Result")
         uploaded = st.file_uploader("Upload a JSON result file", type=["json"])
@@ -421,7 +403,7 @@ def main():
                 content: str = uploaded.read().decode("utf-8")
                 data: dict = load_results_json(content)
                 st.success("✅ Result loaded successfully!")
-                # Display loaded result
+
                 state_label: str = data.get("psychological_state", "Unknown")
                 color: str = STATE_COLORS.get(state_label, "#555")
                 st.markdown(f"""
@@ -440,7 +422,6 @@ def main():
             st.session_state.page = "home"
             st.rerun()
 
-    # ── PERSONAL DETAILS PAGE ──
     elif st.session_state.page == "details":
         st.subheader("👤 Personal Details")
         st.info("Please fill in your details before starting the survey.")
@@ -455,7 +436,6 @@ def main():
         )
         student_id = st.text_input("Student ID (digits only)", placeholder="e.g. 00123456")
 
-        # Validation using if/elif/else
         if st.button("Continue to Survey ➡", type="primary"):
             errors: list = []
             if not validate_name(surname):
@@ -481,7 +461,6 @@ def main():
             st.session_state.page = "home"
             st.rerun()
 
-    # ── SURVEY PAGE ──
     elif st.session_state.page == "survey":
         st.subheader("📋 Survey Questions")
         total_q: int = len(ACTIVE_QUESTIONS)
@@ -596,7 +575,6 @@ def main():
                 if key in st.session_state:
                     del st.session_state[key]
             st.rerun()
-
 
 if __name__ == "__main__":
     main()
